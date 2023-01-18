@@ -22,29 +22,20 @@ public class Sensor{
     
     ///Erstellen des Motionmanagers, welcher Sensordaten empfängt
     func interval(){
-        if motionManager.isDeviceMotionAvailable {
-            motionManager.deviceMotionUpdateInterval = 0.3
-            
-            motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { data,error in
-                //print("Gravity XYZ")
-                self.gravityX = data?.gravity.x ?? 0
-                self.gravityY = data?.gravity.y ?? 0
-                self.gravityZ = data?.gravity.z ?? 0
+        while (motionManager.isDeviceMotionActive){
+            if motionManager.isDeviceMotionAvailable {
+                motionManager.deviceMotionUpdateInterval = 0.3
+                
+                motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { data,error in
+                    //print("Gravity XYZ")
+                    self.gravityX = data?.gravity.x ?? 0
+                    self.gravityY = data?.gravity.y ?? 0
+                    self.gravityZ = data?.gravity.z ?? 0
+                }
             }
         }
     }
-    ///Zeigt die Bewegung entlang der x-Achse des Geräts an
-    func showGravityX() -> Double{
-        return gravityX
-    }
-    ///Zeigt die Bewegung entlang der y-Achse des Geräts an
-    func showGravityY() -> Double{
-        return gravityY
-    }
-    ///Zeigt die Bewegung entlang der z-Achse des Geräts an
-    func showGravityZ() -> Double{
-        return gravityZ
-    }
+    
     ///Gibt an, wenn sich das Gerät nach vorne neigt
     func forward() -> Bool{
         return gravityX > 0.3

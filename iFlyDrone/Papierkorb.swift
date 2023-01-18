@@ -36,6 +36,35 @@ import Foundation
 //Viewmodel
 
 //Sensor
+/*
+ 
+ ///Zeigt die Bewegung entlang der x-Achse des Geräts an
+ func showGravityX() -> Double{
+     return gravityX
+ }
+ ///Zeigt die Bewegung entlang der y-Achse des Geräts an
+ func showGravityY() -> Double{
+     return gravityY
+ }
+ ///Zeigt die Bewegung entlang der z-Achse des Geräts an
+ func showGravityZ() -> Double{
+     return gravityZ
+ }
+///Gibt die Werte der Bewegungsänderung wieder entlang der x-Achse
+func showGravX() -> String{
+   var gravX = "\(sensor.showGravityX())"
+    return gravX
+}
+///Gibt die Werte der Bewegungsänderung wieder entlang der y-Achse
+func showGravY() -> String{
+   var gravY = "\(sensor.showGravityY())"
+    return gravY
+}
+///Gibt die Werte der Bewegungsänderung wieder entlang der z-Achse
+func showGravZ() -> String{
+   var gravZ = "\(sensor.showGravityZ())"
+    return gravZ
+}*/
 /*let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()*/
 /* (timer) { input in
  print(motionManager.isDeviceMotionAvailable)

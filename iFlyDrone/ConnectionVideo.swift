@@ -1,8 +1,8 @@
 //
-//  Connection.swift
+//  ConnectionVideo.swift
 //  iFlyDrone
 //
-//  Created by Kevin Mündel on 12.01.23.
+//  Created by Kevin Mündel on 18.01.23.
 //
 
 import Foundation
@@ -10,11 +10,11 @@ import Network
 
 
 ///CLerk, welcher für die Verbindungen zu der Drohne verantwortlich ist
-public class Connection {
+public class ConnectionVideo {
     
     var connection : NWConnection? = nil
     var host: NWEndpoint.Host = "192.168.10.1"
-    var port: NWEndpoint.Port = 8889
+    var port: NWEndpoint.Port = 11111
     
     ///sendet Daten an einen Udp-Server
     func send(_ payload: Data) {
@@ -73,4 +73,3 @@ public class Connection {
         connection!.start(queue: .global())
     }
 }
-

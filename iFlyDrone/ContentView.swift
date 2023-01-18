@@ -11,48 +11,91 @@ import Network
 
 
 struct ContentView: View {
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @ObservedObject var vm : MainVM
-    @State var connection: NWConnection?
-    @State private var activated = false
     var host: NWEndpoint.Host = "192.168.10.1"
     var port: NWEndpoint.Port = 8890
     
     var body: some View {
-        HStack{
-            VStack {
+        ZStack{
+            
+            VStack{
+                Text("Please connect to the Drone using Wifi")
+            }
+            HStack{
                 Spacer()
-                Button("Connect") {
-                    NSLog("Connect pressed")
-                    vm.connToDrone()
+                VStack{
+                    Spacer()
+                    Button("Connect") {
+                        NSLog("Connect pressed")
+                        vm.connToDrone()
+                    }
+                    Spacer()
+                    Button("Send Command") {
+                        NSLog("Send pressed")
+                        vm.sendCommand()
+                    }
+                    Spacer()
+                    Button("battery") {
+                        NSLog("battery")
+                        vm.showBattery()
+                    }
+                    Spacer()
+                    Button("Rotor Stop!"){
+                        NSLog("rotor stop")
+                        vm.stopRotor()
+                    }
+                    Spacer()
                 }
                 Spacer()
-                Button("Send Command") {
-                    NSLog("Send pressed")
-                    vm.sendCommand()
-                }
-                Spacer()
-                Button("takeoff") {
+                VStack {
+                    Spacer()
+                    Button("takeoff") {
                         NSLog("takeoff")
                         vm.takeOff()
                     }
-                Button("land"){
+                    Spacer()
+                    Button("land"){
                         NSLog("land")
                         vm.land()
                     }
-                Spacer()
-                }.padding()
-                VStack{
-                Text("Gravity XYZ")
-                Text(vm.showGravX())
-                Text(vm.showGravY())
-                Text(vm.showGravZ())
+                    Spacer()
+                    Button("Flymode On"){
+                        vm.mode = true
+                    }
+                    Spacer()
+                    Button("Flymode Off"){
+                        vm.mode = false
+                    }
+                    Spacer()
                 }
-            }
+                Spacer()
+                VStack {
+                    Spacer()
+                    Button("connVideo") {
+                        NSLog("Connection to Video")
+                        vm.connDroneVideo()
+                    }
+                    Spacer()
+                    Button("Stream Start") {
+                        NSLog("start Stream")
+                        vm.streamOn()
+                    }
+                    Spacer()
+                    Button("Stream End") {
+                        NSLog("end Stream")
+                        vm.streamOff()
+                    }
+                    Spacer()
+                }
+                Spacer()
+            }.padding()
         }
     }
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView(vm:MainVM())
-        }
+}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(vm:MainVM())
     }
+}
 
