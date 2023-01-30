@@ -16,7 +16,7 @@ public class Connection {
     var host: NWEndpoint.Host = "192.168.10.1"
     var port: NWEndpoint.Port = 8889
     
-    ///sendet Daten an einen Udp-Server
+    ///sendet Daten an einen Udp-Server und erhält eine Antwort zurück
     func send(_ payload: Data) {
         connection!.send(content: payload, completion: .contentProcessed({ sendError in
             if let error = sendError {

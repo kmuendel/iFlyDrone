@@ -17,12 +17,13 @@ public class Sensor{
     private var gravityY : Double = 0
     private var gravityZ : Double = 0
     
+    ///ruft einen Motionmanager auf
     init(vm: MainVM) {
         motionManager = CMMotionManager()
         self.vm = vm
     }
     
-    ///Erstellen des Motionmanagers, welcher Sensordaten empfängt
+    ///Erstellen des Motionmanagers, welcher Sensordaten empfängt, und ruft dann eine weitere Funktion auf
     func interval() {
         if motionManager.isDeviceMotionAvailable {
             motionManager.deviceMotionUpdateInterval = 1

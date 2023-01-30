@@ -13,7 +13,6 @@
 		564B6B1D2939F78D003F1D0C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 564B6B1C2939F78D003F1D0C /* Preview Assets.xcassets */; };
 		564B6B242939FF25003F1D0C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564B6B232939FF25003F1D0C /* ViewModel.swift */; };
 		564B6B28293A000A003F1D0C /* Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564B6B27293A000A003F1D0C /* Sensor.swift */; };
-		564DDFB0297570A300DBB55F /* Papierkorb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564DDFAF297570A300DBB55F /* Papierkorb.swift */; };
 		564DDFB22977E48500DBB55F /* ConnectionVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564DDFB12977E48500DBB55F /* ConnectionVideo.swift */; };
 		565290662970186B00205B9C /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565290652970186B00205B9C /* Connection.swift */; };
 /* End PBXBuildFile section */
@@ -26,7 +25,6 @@
 		564B6B1C2939F78D003F1D0C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		564B6B232939FF25003F1D0C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		564B6B27293A000A003F1D0C /* Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sensor.swift; sourceTree = "<group>"; };
-		564DDFAF297570A300DBB55F /* Papierkorb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Papierkorb.swift; sourceTree = "<group>"; };
 		564DDFB12977E48500DBB55F /* ConnectionVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionVideo.swift; sourceTree = "<group>"; };
 		565290652970186B00205B9C /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,7 +65,6 @@
 				565290652970186B00205B9C /* Connection.swift */,
 				564DDFB12977E48500DBB55F /* ConnectionVideo.swift */,
 				564B6B152939F78C003F1D0C /* iFlyDroneApp.swift */,
-				564DDFAF297570A300DBB55F /* Papierkorb.swift */,
 				564B6B192939F78D003F1D0C /* Assets.xcassets */,
 				564B6B1B2939F78D003F1D0C /* Preview Content */,
 			);
@@ -154,7 +151,6 @@
 			files = (
 				564B6B28293A000A003F1D0C /* Sensor.swift in Sources */,
 				564B6B182939F78C003F1D0C /* ContentView.swift in Sources */,
-				564DDFB0297570A300DBB55F /* Papierkorb.swift in Sources */,
 				564B6B242939FF25003F1D0C /* ViewModel.swift in Sources */,
 				564DDFB22977E48500DBB55F /* ConnectionVideo.swift in Sources */,
 				564B6B162939F78C003F1D0C /* iFlyDroneApp.swift in Sources */,

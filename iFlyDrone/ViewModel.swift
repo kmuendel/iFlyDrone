@@ -12,22 +12,21 @@ import CoreMotion
 class MainVM : ObservableObject{
     var sensor : Sensor? = nil
     var connection : Connection? = nil
-    var connVideo : ConnectionVideo? = nil
     var mode : Bool = false
     
+    ///ruft alle relevanten Clerks auf
     init(){
     connection = Connection()
-    connVideo = ConnectionVideo()
     sensor = Sensor(vm:self)
     startFlying()
     }
     
+    ///beginnt den Aufruf des Motionmanagers
     func startFlying(){
         sensor!.interval()
     }
     
     ///startet die Flugbefehle
-    //Hier möchte ich eigentlich die Flugbefehle "parken", sodass sie aktiv bleiben, solange die App läuft.
     func update(){
             flyForward()
             flyBackward()
@@ -85,18 +84,6 @@ class MainVM : ObservableObject{
     }
     func stopRotor(){
         connection!.send("emergency".data(using: .utf8)!)
-    }
-    ///Stellt Verbindung her, um einen Videostream starten zu können
-    /*func connDroneVideo(){
-        connVideo.connect()
-    }*/
-    ///startet Videostream
-    func streamOn(){
-        connection!.send("streamon".data(using: .utf8)!)
-    }
-    ///beendet Videostream
-    func streamOff(){
-        connection!.send("streamoff".data(using: .utf8)!)
     }
 }
 
