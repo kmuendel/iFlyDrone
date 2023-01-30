@@ -13,8 +13,7 @@ import Foundation
 @State private var gravityY : Double = 0
 @State private var gravityZ : Double = 0
 @State private var Position : String = "Move Me"
-*/
-/*
+
     Text(Position)
 }.onReceive(timer) { input in
     print(motionManager.isDeviceMotionAvailable)
@@ -31,12 +30,29 @@ import Foundation
             
         }
     }
-}*/
-
+}
+VStack{
+    Spacer()
+    Button("connVideo") {
+        NSLog("Connection to Video")
+        vm.connDroneVideo()}
+    Spacer()
+    Button("Stream Start") {
+        NSLog("start Stream")
+        vm.streamOn()}
+    Spacer()
+    Button("Stream End") {
+        NSLog("end Stream")
+        vm.streamOff()}
+    Spacer()
+}//.tabItem{Text("Video")}
+}.padding()
+ 
+ 
 //Viewmodel
 
 //Sensor
-/*
+
  
  ///Zeigt die Bewegung entlang der x-Achse des Geräts an
  func showGravityX() -> Double{
@@ -64,13 +80,13 @@ func showGravY() -> String{
 func showGravZ() -> String{
    var gravZ = "\(sensor.showGravityZ())"
     return gravZ
-}*/
-/*let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()*/
-/* (timer) { input in
+/
+let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+ (timer) { input in
  print(motionManager.isDeviceMotionAvailable)
  if motionManager.isDeviceMotionAvailable {
- motionManager.deviceMotionUpdateInterval = 0.3*/
+ motionManager.deviceMotionUpdateInterval = 0.3
 
 //Connection
 
-
+  */

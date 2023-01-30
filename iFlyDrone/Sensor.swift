@@ -11,47 +11,52 @@ import SwiftUI
 
 ///Clerk, welcher verantwortlich für die Sensordaten des Geräts ist
 public class Sensor{
-    var motionManager = CMMotionManager()
+    var vm : MainVM
+    var motionManager : CMMotionManager!
     private var gravityX : Double = 0
     private var gravityY : Double = 0
     private var gravityZ : Double = 0
     
-    init() {
-        interval()
+    init(vm: MainVM) {
+        motionManager = CMMotionManager()
+        self.vm = vm
     }
     
     ///Erstellen des Motionmanagers, welcher Sensordaten empfängt
-    func interval(){
-        while (motionManager.isDeviceMotionActive){
-            if motionManager.isDeviceMotionAvailable {
-                motionManager.deviceMotionUpdateInterval = 0.3
-                
-                motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { data,error in
-                    //print("Gravity XYZ")
-                    self.gravityX = data?.gravity.x ?? 0
-                    self.gravityY = data?.gravity.y ?? 0
-                    self.gravityZ = data?.gravity.z ?? 0
-                }
+    func interval() {
+        if motionManager.isDeviceMotionAvailable {
+            motionManager.deviceMotionUpdateInterval = 1
+           
+            
+            motionManager.startDeviceMotionUpdates( to: OperationQueue.main) { data,error in
+                NSLog("Gravity XYZ")
+                self.gravityX = data?.gravity.x ?? 0
+                self.gravityY = data?.gravity.y ?? 0
+                self.gravityZ = data?.gravity.z ?? 0
+                self.vm.update()
             }
         }
     }
     
+    
+    
+    
     ///Gibt an, wenn sich das Gerät nach vorne neigt
     func forward() -> Bool{
         return gravityX > 0.3
-        }
+    }
     ///Gibt an, wenn sich das Gerät nach hintent neigt
     func backward() -> Bool{
         return gravityX < -0.3
-        }
+    }
     ///Gibt an, wen sich das Gerät nach links neigt
     func left() -> Bool{
         return gravityY > 0.3
-        }
+    }
     ///Gibt an, wen sich das Gerät nach rechts neigt
     func right() -> Bool{
         return gravityY < -0.3
-        }
     }
+}
 
-        
+

@@ -17,82 +17,64 @@ struct ContentView: View {
     var port: NWEndpoint.Port = 8890
     
     var body: some View {
-        ZStack{
-            
-            VStack{
-                Text("Please connect to the Drone using Wifi")
-            }
-            HStack{
-                Spacer()
-                VStack{
-                    Spacer()
-                    Button("Connect") {
-                        NSLog("Connect pressed")
-                        vm.connToDrone()
-                    }
-                    Spacer()
-                    Button("Send Command") {
-                        NSLog("Send pressed")
-                        vm.sendCommand()
-                    }
-                    Spacer()
-                    Button("battery") {
-                        NSLog("battery")
-                        vm.showBattery()
-                    }
-                    Spacer()
-                    Button("Rotor Stop!"){
-                        NSLog("rotor stop")
-                        vm.stopRotor()
-                    }
-                    Spacer()
-                }
-                Spacer()
-                VStack {
-                    Spacer()
-                    Button("takeoff") {
-                        NSLog("takeoff")
-                        vm.takeOff()
-                    }
-                    Spacer()
-                    Button("land"){
-                        NSLog("land")
-                        vm.land()
-                    }
-                    Spacer()
-                    Button("Flymode On"){
-                        vm.mode = true
-                    }
-                    Spacer()
-                    Button("Flymode Off"){
-                        vm.mode = false
-                    }
-                    Spacer()
-                }
-                Spacer()
-                VStack {
-                    Spacer()
-                    Button("connVideo") {
-                        NSLog("Connection to Video")
-                        vm.connDroneVideo()
-                    }
-                    Spacer()
-                    Button("Stream Start") {
-                        NSLog("start Stream")
-                        vm.streamOn()
-                    }
-                    Spacer()
-                    Button("Stream End") {
-                        NSLog("end Stream")
-                        vm.streamOff()
-                    }
-                    Spacer()
-                }
-                Spacer()
-            }.padding()
+        TabView{
+            EntryView().tabItem{Text("Entry")}
+            ConnectionView(vm: vm).tabItem{Text("Connection")}
+            ControlView(vm: vm).tabItem{Text("Control")}
         }
     }
 }
+
+struct EntryView: View {
+    var body : some View{
+        VStack{
+            Text("Please connect to the Drone using Wifi")
+        }
+    }
+}
+
+struct ConnectionView: View{
+    @ObservedObject var vm : MainVM
+    var body: some View{
+        VStack{
+            Spacer()
+            Button("Connect") {
+                NSLog("Connect pressed")
+                vm.connToDrone()
+            }
+            Spacer()
+            Button("Send Command") {
+                NSLog("Send pressed")
+                vm.sendCommand()
+            }
+            Spacer()
+        }
+    }
+}
+
+struct ControlView: View {
+    @ObservedObject var vm : MainVM
+    var body: some View{
+        VStack{
+            Spacer()
+            Button("Takeoff") {
+                NSLog("takeoff")
+                vm.takeOff()}
+            Button("Landing"){
+                NSLog("land")
+                vm.land()}
+            Spacer()
+            Button("Battery Status") {
+                    NSLog("battery")
+                    vm.showBattery()}
+            Button("Rotor Stop!"){
+                    NSLog("rotor stop")
+                    vm.stopRotor()}
+            Spacer()
+            }
+    }
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(vm:MainVM())
