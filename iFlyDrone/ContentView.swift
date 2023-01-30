@@ -24,7 +24,7 @@ struct ContentView: View {
         }
     }
 }
-
+///View für den Anfang der App
 struct EntryView: View {
     var body : some View{
         VStack{
@@ -32,7 +32,7 @@ struct EntryView: View {
         }
     }
 }
-
+///View für alle Verbindungsbefehle
 struct ConnectionView: View{
     @ObservedObject var vm : MainVM
     var body: some View{
@@ -51,7 +51,7 @@ struct ConnectionView: View{
         }
     }
 }
-
+///View für alle Steuerungsspezifischen Befehle
 struct ControlView: View {
     @ObservedObject var vm : MainVM
     var body: some View{
